@@ -7,11 +7,16 @@ Terraform module for creating AWS S3 bucket to be used for Zededa ZedCloud Data 
 By default, module will create a new IAM user for S3.
 To upload image, set upload_image to true and place file in the current working directory
 
+To run this project, you will need to set the following environment variables or the [shared configuration and credentials files](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
+- AWS_ACCESS_KEY_ID
+- AWS_SECRET_ACCESS_KEY
+- AWS_DEFAULT_REGION
+
 ```hcl
 module "zedcloud-aws-s3-datastore" {
-  source = "../terraform-aws-zedcloud-aws-s3-datastore"
-  #version = "1.0.0"
-  
+  source  = "bayupw/zedcloud-aws-s3-datastore/aws"
+  version = "1.0.0"
+
   s3_folder               = "my-folder"
   upload_image            = true
   image_filename          = "my-image.qcow2"
@@ -26,7 +31,8 @@ output "zedcloud-aws-s3-datastore" {
 ```
 
 Note:
-When creating ZedCloud AWS S3 datastore via zCLI, supported regions are ['us-east-1', 'us-east-2', 'us-west-1', 'us-west-2']
+- When creating ZedCloud AWS S3 datastore via zCLI, supported regions are ['us-east-1', 'us-east-2', 'us-west-1', 'us-west-2']
+- See the [AWS S3 User Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-bucket-intro.html) for more information about virtual-hosted and path-style URLs
 
 ## Contributing
 

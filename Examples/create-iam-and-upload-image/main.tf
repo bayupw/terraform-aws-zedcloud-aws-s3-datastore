@@ -1,6 +1,6 @@
 module "zedcloud-aws-s3-datastore" {
-  source = "../terraform-aws-zedcloud-aws-s3-datastore"
-  #version = "1.0.0"
+  source  = "bayupw/zedcloud-aws-s3-datastore/aws"
+  version = "1.0.0"
   
   s3_folder               = "my-folder"
   upload_image            = true
